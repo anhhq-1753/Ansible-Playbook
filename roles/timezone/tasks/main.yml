@@ -1,0 +1,8 @@
+- name: set timezone to Asia/Ho_Chi_Minh
+  become: yes
+  timezone:
+    name: "{{ base_timezone }}"
+
+- name: Show Time
+  command: timedatectl
+  register: time
