@@ -1,0 +1,38 @@
+- name: Add the user {{ deploy_user }} with a bash shell
+  become: yes
+  user:
+    name: "{{ deploy_user }}"
+    groups: adm,sudo
+    state: present
+    shell: /bin/bash
+    append: yes
+    createhome: yes
+    home: /home/{{ deploy_user }}
+
+- name: Ask password when sudo
+  lineinfile:
+    path: /etc/sudoers.d/90-cloud-init-users
+    state: present
+    line: 'deploy ALL=(ALL) NOPASSWD:ALL'
+    validate: visudo -cf %s
+  become: yes
+
+- name: mkdir .ssh
+  file:
+    path: /home/{{ deploy_user }}/.ssh
+    state: directory
+    owner: "{{ deploy_user }}"
+    group: "{{ deploy_user }}"
+    mode: 0700
+  become: yes
+
+- name: Copy public key (*.pub)
+  copy:
+    src: /home/{{ ansible_ssh_user }}/.ssh/authorized_keys
+    dest: /home/{{ deploy_user }}/.ssh/authorized_keys
+    owner: "{{ ansible_ssh_user }}"
+    group: "{{ ansible_ssh_user }}"
+    mode: 0600
+    remote_src: yes
+  delegate_to: localhost
+  become: yes
