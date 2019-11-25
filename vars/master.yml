@@ -1,0 +1,4 @@
+#user
+ansible_ssh_user: anhhq
+private_ssh_key_name: key
+
