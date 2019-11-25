@@ -2,3 +2,7 @@
   become: yes
   timezone:
     name: "{{ base_timezone }}"
+
+- name: Show Time
+  command: timedatectl
+  register: time
