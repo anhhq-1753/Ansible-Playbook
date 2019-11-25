@@ -1,9 +1,0 @@
-  - name: Remove old resolv file
-    command: rm -rf /etc/resolv.conf
-    become: yes
-
-  - name: Create new resolv.conf file
-    become: yes
-    template:
-      src: resolv.conf.j2
-      dest: "/etc/resolv.conf"
