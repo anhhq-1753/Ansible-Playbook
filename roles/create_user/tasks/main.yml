@@ -30,9 +30,8 @@
   copy:
     src: /home/{{ ansible_ssh_user }}/.ssh/authorized_keys
     dest: /home/{{ deploy_user }}/.ssh/authorized_keys
-    owner: "{{ ansible_ssh_user }}"
-    group: "{{ ansible_ssh_user }}"
+    owner: "{{ deploy_user }}"
+    group: "{{ deploy_user }}"
     mode: 0600
-    remote_src: yes
   delegate_to: localhost
   become: yes
