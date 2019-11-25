@@ -1,2 +1,2 @@
 [worker]
-192.168.69.190
+192.168.69.190 ansible_ssh_private_key_file=/home/anhhq/key
