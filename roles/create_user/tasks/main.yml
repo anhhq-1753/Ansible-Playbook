@@ -29,9 +29,8 @@
 - name: Copy public key
   copy:
     src: /home/{{ ansible_ssh_user }}/.ssh/authorized_keys
-    dest: /home/{{ deploy_user }}/.ssh/authorized_keys
+    dest: "/home/{{ deploy_user }}/.ssh/authorized_keys"
     owner: "{{ deploy_user }}"
     group: "{{ deploy_user }}"
     mode: 0600
-  delegate_to: localhost
-  become: yes
+  become: true
