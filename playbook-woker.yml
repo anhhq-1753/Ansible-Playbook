@@ -14,3 +14,5 @@
     command: rm -rf /etc/resolv.conf
     become: yes
 
+  - name: Create new resolv.conf
+    
