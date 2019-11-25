@@ -4,7 +4,7 @@
   become_method: sudo
   gather_facts: yes
   vars_files:
-  - vars/woker.yml
+  - vars/worker.yml
   pre_tasks:
   - name: Pre install python 2
     raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
@@ -13,4 +13,4 @@
   - name: Remove old resolv file
     command: rm -rf /etc/resolv.conf
     become: yes
-    
+
