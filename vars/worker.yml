@@ -1,3 +1,6 @@
 #user
 ansible_ssh_user: anhhq
 private_ssh_key_name: key
+
+#role/timezone
+base_timezone: Asia/Ho_Chi_Minh
