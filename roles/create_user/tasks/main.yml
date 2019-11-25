@@ -11,7 +11,7 @@
 
 - name: Ask password when sudo
   lineinfile:
-    path: /etc/sudoers.d/90-cloud-init-users
+    path: /etc/sudoers
     state: present
     line: 'deploy ALL=(ALL) NOPASSWD:ALL'
     validate: visudo -cf %s
@@ -26,7 +26,7 @@
     mode: 0700
   become: yes
 
-- name: Copy public key (*.pub)
+- name: Copy public key
   copy:
     src: /home/{{ ansible_ssh_user }}/.ssh/authorized_keys
     dest: /home/{{ deploy_user }}/.ssh/authorized_keys
