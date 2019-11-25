@@ -14,3 +14,4 @@
   - resolv
   - timezone
   - create_user
+  - pam_limits
