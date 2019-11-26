@@ -1,0 +1,17 @@
+- hosts: worker
+
+  remote_user: "{{ ansible_ssh_user }}"
+  become_method: sudo
+  gather_facts: yes
+  vars_files:
+  - vars/worker.yml
+  pre_tasks:
+  - name: Pre install python 2
+    raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+    become: yes
+
+  roles:
+  - resolv
+  - timezone
+  - create_user
+  - pam_limits
