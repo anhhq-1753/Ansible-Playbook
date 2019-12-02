@@ -1,9 +1,11 @@
 - hosts: vcenter
+  remote_user: "{{ vcenter_user }}"
   gather_facts: false
   connection: local
   pre_tasks:
   - name: install package
-    host: localhost
+    hosts: localhost
+    remote_user: "{{ localhost_user }}"
     apt:
       update_cache: yes
       name: "{{ item }}"

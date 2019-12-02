@@ -8,4 +8,5 @@ vm_name: "Test-Server"
 
 
 ansible_become_password: 123@123a
+localhost_user: anhhq
 

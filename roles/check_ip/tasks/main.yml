@@ -1,5 +1,5 @@
 - name: Check IP clear
-  host: localhost
+  hosts: localhost
   command: /home/anhhq/scripts/checkip.sh
   register: IP
 - debug:
