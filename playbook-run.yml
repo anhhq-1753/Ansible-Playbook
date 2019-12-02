@@ -1,0 +1,16 @@
+- hosts: vcenter
+  gather_facts: false
+  connection: local
+  pre_tasks:
+  - name: install package
+    host: localhost
+    apt:
+      update_cache: yes
+      name: "{{ item }}"
+      state: present
+    loop: [ 'nmap']
+    become: yes
+
+  roles:
+    - checkip
+

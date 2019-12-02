@@ -1,0 +1,11 @@
+vcenter_hostname: 192.168.69.42
+vcenter_user: administrator@vsphere.local
+vcenter_pass: Aa@123456
+datacenter_name: Office-Team
+vmtemplate_centos: "[Template][192.168.69.47] Centos 7"
+vmtemplate_ubuntu: "[Template][192.168.69.47] Ubuntu 16.04"
+vm_name: "Test-Server"
+
+
+ansible_become_password: 123@123a
+

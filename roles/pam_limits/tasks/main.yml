@@ -1,7 +1,0 @@
-- name: Change pam_limits
-  pam_limits:
-    domain: '*'
-    limit_type: '-'
-    limit_item: memlock
-    value: 65535
-  become: yes

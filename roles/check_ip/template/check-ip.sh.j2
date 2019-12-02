@@ -1,0 +1,17 @@
+# Insert IP ranges here
+# Example: 
+# IP ranges: 192.168.67.0/24 and 192.168.69.0/16
+# change variables below
+# IP_network=("192.168.67.0" "192.168.69.0")
+# IP_subnet=("24" "16")
+#
+
+IP_network=("192.168.69.0")
+IP_subnet=("24")
+for ((i=0 ; i < ${#IP_network[@]} ; i++)); do
+        IPser=$(nmap -v -sn -n ${IP_network[$i]}/${IP_subnet[$i]} -oG - | awk '/Status: Down/{print $2}' | grep -v ${IP_network[$i]} | head -n1)
+        if [ -n "$IPser" ]; then
+                echo $IPser
+                exit 0
+        fi
+done
