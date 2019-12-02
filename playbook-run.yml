@@ -6,13 +6,14 @@
   - name: install package
     hosts: localhost
     remote_user: "{{ localhost_user }}"
-    apt:
-      update_cache: yes
-      name: "{{ item }}"
-      state: present
-    loop: [ 'nmap']
-    become: yes
+    tasks:
+      apt:
+        update_cache: yes
+        name: "{{ item }}"
+        state: present
+      loop: [ 'nmap']
+      become: yes
 
   roles:
-    - checkip
+    - check_ip
 

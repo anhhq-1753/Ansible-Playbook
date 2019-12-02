@@ -1,5 +1,6 @@
 - name: Check IP clear
   hosts: localhost
+  remote_user: "{{ localhost_user }}"
   command: /home/anhhq/scripts/checkip.sh
   register: IP
 - debug:
